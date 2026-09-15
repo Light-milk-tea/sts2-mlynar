@@ -1,0 +1,30 @@
+# Third-party read-only clones (Watcher / Downfall). Keep local only.
+/_ref/
+
+# Godot / MegaDot cache
+**/.godot/
+
+# Build outputs
+**/bin/
+**/obj/
+**/publish/
+
+# IDE
+.idea/
+.vs/
+*.user
+*.suo
+
+# Local Godot / game install paths
+Directory.Build.props
+**/Directory.Build.props
+
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Secrets
+.env
+.env.*
+credentials.json
