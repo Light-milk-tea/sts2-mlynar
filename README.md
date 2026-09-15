@@ -17,7 +17,19 @@
 | `mod制作发布流程.md` | 环境、发布、工坊流程 |
 | `github提交SKILL.md` | 本仓库的提交规范 |
 
-本机只读参照（观者 / 崩坠源码）放在 `_ref/`，**不进这个仓库**。要对照时在本机浅克隆即可。
+本机只读参照（观者 / 崩坠源码）放在 `_ref/`，**不进这个仓库**。换电脑后按下面两个原仓库自己浅克隆即可。
+
+| 本机目录 | 原仓库 | 当前对照提交 |
+| --- | --- | --- |
+| `_ref/WatcherMod` | https://github.com/lamali292/WatcherMod | `a7afee6` |
+| `_ref/Downfall` | https://github.com/lamali292/Downfall | `0dc5bb9` |
+
+```
+git clone --depth 1 https://github.com/lamali292/WatcherMod.git _ref/WatcherMod
+git clone --depth 1 https://github.com/lamali292/Downfall.git _ref/Downfall
+```
+
+这两份是别人的模组源码，只读对照，不要改、不要再推回他们的仓库。
 
 ## 本机路径
 
