@@ -1,0 +1,16 @@
+{
+  "MYFIRSTMOD-TRIALIST.title": "试炼者",
+  "MYFIRSTMOD-TRIALIST.titleObject": "试炼者",
+  "MYFIRSTMOD-TRIALIST.description": "MyFirstMod 的测试角色。\n开局使用铁甲战士的打击、防御和燃烧之血。",
+  "MYFIRSTMOD-TRIALIST.pronounObject": "ta",
+  "MYFIRSTMOD-TRIALIST.possessiveAdjective": "ta的",
+  "MYFIRSTMOD-TRIALIST.pronounPossessive": "ta的",
+  "MYFIRSTMOD-TRIALIST.pronounSubject": "ta",
+  "MYFIRSTMOD-TRIALIST.goldMonologue": "够用了。",
+  "MYFIRSTMOD-TRIALIST.eventDeathPrevention": "还没结束。",
+  "MYFIRSTMOD-TRIALIST.aromaPrinciple": "踏入尖塔的第一步。",
+  "MYFIRSTMOD-TRIALIST.cardsModifierTitle": "试炼者卡牌",
+  "MYFIRSTMOD-TRIALIST.cardsModifierDescription": "试炼者的卡牌将出现在奖励和商店中。",
+  "MYFIRSTMOD-TRIALIST.banter.alive.endTurnPing": "该你了。",
+  "MYFIRSTMOD-TRIALIST.banter.dead.endTurnPing": "……"
+}

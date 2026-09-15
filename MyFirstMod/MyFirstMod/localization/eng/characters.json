@@ -1,0 +1,16 @@
+{
+  "MYFIRSTMOD-TRIALIST.title": "The Trialist",
+  "MYFIRSTMOD-TRIALIST.titleObject": "The Trialist",
+  "MYFIRSTMOD-TRIALIST.description": "A placeholder character for testing MyFirstMod.\nStarts with Ironclad Strikes, Defends, and Burning Blood.",
+  "MYFIRSTMOD-TRIALIST.pronounObject": "them",
+  "MYFIRSTMOD-TRIALIST.possessiveAdjective": "their",
+  "MYFIRSTMOD-TRIALIST.pronounPossessive": "theirs",
+  "MYFIRSTMOD-TRIALIST.pronounSubject": "they",
+  "MYFIRSTMOD-TRIALIST.goldMonologue": "This will do.",
+  "MYFIRSTMOD-TRIALIST.eventDeathPrevention": "Not yet.",
+  "MYFIRSTMOD-TRIALIST.aromaPrinciple": "A first step into the Spire.",
+  "MYFIRSTMOD-TRIALIST.cardsModifierTitle": "Trialist Cards",
+  "MYFIRSTMOD-TRIALIST.cardsModifierDescription": "Trialist cards will now appear in rewards and shops.",
+  "MYFIRSTMOD-TRIALIST.banter.alive.endTurnPing": "Your turn.",
+  "MYFIRSTMOD-TRIALIST.banter.dead.endTurnPing": "..."
+}
