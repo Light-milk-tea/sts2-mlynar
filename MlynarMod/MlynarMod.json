@@ -1,0 +1,14 @@
+﻿{
+  "id": "MlynarMod",
+  "name": "Mlynar / 玛恩纳",
+  "author": "Light-milk-tea",
+  "description": "杀戮尖塔2独立角色：明日方舟玛恩纳。鞘中蓄势，拔剑爆发，打完收剑。",
+  "version": "v0.1.0",
+  "min_game_version": "0.107.0",
+  "has_pck": true,
+  "has_dll": true,
+  "dependencies": [
+    {"id": "BaseLib", "min_version": "3.4.7"}
+  ],
+  "affects_gameplay": true
+}

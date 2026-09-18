@@ -1,0 +1,8 @@
+<Project>
+    <PropertyGroup>
+        <!-- Megadot current version is 4.5.1, and the game won't load your .pck if the Godot version used is newer. -->
+        <!-- Copy this file to Directory.Build.props and point both paths at your machine. -->
+        <GodotPath>C:/MegaDot/4.5.1-m.14/MegaDot_v4.5.1-stable_mono_win64.exe</GodotPath>
+        <Sts2Path>C:/Program Files (x86)/Steam/steamapps/common/Slay the Spire 2</Sts2Path>
+    </PropertyGroup>
+</Project>
