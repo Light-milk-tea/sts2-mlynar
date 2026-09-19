@@ -1,0 +1,20 @@
+{
+  "MLYNARMOD-MLYNAR.title": "玛恩纳",
+  "MLYNARMOD-MLYNAR.titleObject": "玛恩纳",
+  "MLYNARMOD-MLYNAR.description": "卡西米尔的游侠。鞘中蓄势，拔剑只开一两个回合，打完收剑。",
+  "MLYNARMOD-MLYNAR.pronounObject": "他",
+  "MLYNARMOD-MLYNAR.possessiveAdjective": "他的",
+  "MLYNARMOD-MLYNAR.pronounPossessive": "他的",
+  "MLYNARMOD-MLYNAR.pronounSubject": "他",
+  "MLYNARMOD-MLYNAR.goldMonologue": "够用了。",
+  "MLYNARMOD-MLYNAR.eventDeathPrevention": "还没结束。",
+  "MLYNARMOD-MLYNAR.aromaPrinciple": "剑还在鞘里。",
+  "MLYNARMOD-MLYNAR.cardsModifierTitle": "玛恩纳卡牌",
+  "MLYNARMOD-MLYNAR.cardsModifierDescription": "玛恩纳的卡牌将出现在奖励和商店中。",
+  "MLYNARMOD-MLYNAR.banter.alive.endTurnPing": "该你了。",
+  "MLYNARMOD-MLYNAR.banter.dead.endTurnPing": "……",
+  "mlynar_discard_one": "弃 1 张牌",
+  "mlynar_discard_attacks": "弃掉任意张攻击牌",
+  "mlynar_bottom": "放到抽牌堆底",
+  "mlynar_top": "放到抽牌堆顶"
+}

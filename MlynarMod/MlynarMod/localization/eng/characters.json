@@ -1,0 +1,20 @@
+{
+  "MLYNARMOD-MLYNAR.title": "Mlynar",
+  "MLYNARMOD-MLYNAR.titleObject": "Mlynar",
+  "MLYNARMOD-MLYNAR.description": "A Kazimierz wanderer. Build Poise in the sheath, draw the sword for a short window, then sheathe it.",
+  "MLYNARMOD-MLYNAR.pronounObject": "him",
+  "MLYNARMOD-MLYNAR.possessiveAdjective": "his",
+  "MLYNARMOD-MLYNAR.pronounPossessive": "his",
+  "MLYNARMOD-MLYNAR.pronounSubject": "he",
+  "MLYNARMOD-MLYNAR.goldMonologue": "This will do.",
+  "MLYNARMOD-MLYNAR.eventDeathPrevention": "Not yet.",
+  "MLYNARMOD-MLYNAR.aromaPrinciple": "The sword stays sheathed.",
+  "MLYNARMOD-MLYNAR.cardsModifierTitle": "Mlynar Cards",
+  "MLYNARMOD-MLYNAR.cardsModifierDescription": "Mlynar's cards will now appear in rewards and shops.",
+  "MLYNARMOD-MLYNAR.banter.alive.endTurnPing": "Your turn.",
+  "MLYNARMOD-MLYNAR.banter.dead.endTurnPing": "...",
+  "mlynar_discard_one": "Discard 1 card",
+  "mlynar_discard_attacks": "Discard any number of Attacks",
+  "mlynar_bottom": "Put on bottom of draw pile",
+  "mlynar_top": "Put on top of draw pile"
+}

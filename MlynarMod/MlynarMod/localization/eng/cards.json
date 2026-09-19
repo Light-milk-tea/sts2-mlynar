@@ -1,0 +1,226 @@
+{
+  "MLYNARMOD-RANGER_SWORDSMANSHIP.title": "Strike",
+  "MLYNARMOD-RANGER_SWORDSMANSHIP.description": "Deal {Damage:diff()} damage.",
+
+  "MLYNARMOD-SELF_CONTAINED.title": "Defend",
+  "MLYNARMOD-SELF_CONTAINED.description": "Gain {Block:diff()} Block.",
+
+  "MLYNARMOD-HONE_SWORD.title": "磨剑",
+  "MLYNARMOD-HONE_SWORD.description": "蓄势 +{Poise}。抽 1 张牌。",
+
+  "MLYNARMOD-UNVOICED_FURY.title": "未声张的怒火",
+  "MLYNARMOD-UNVOICED_FURY.description": "进入拔剑（1 回合）。造成 {Damage:diff()} 点伤害。获得 {Block:diff()} 点格挡。",
+
+  "MLYNARMOD-THIS_SWORD_ONLY.title": "只握此剑",
+  "MLYNARMOD-THIS_SWORD_ONLY.description": "造成 {Damage:diff()} 点伤害。拔剑中时，只获得一半蓄势加成。",
+
+  "MLYNARMOD-NEED_NOT_SHARPEN.title": "不必开刃",
+  "MLYNARMOD-NEED_NOT_SHARPEN.description": "造成 {Damage:diff()} 点伤害。蓄势 +{Poise}。",
+
+  "MLYNARMOD-SITTING_THERE.title": "坐在那里",
+  "MLYNARMOD-SITTING_THERE.description": "造成 {Damage:diff()} 点伤害。获得 {Block:diff()} 点格挡。",
+
+  "MLYNARMOD-IT_RAINED.title": "下雨了",
+  "MLYNARMOD-IT_RAINED.description": "对所有敌人造成 {Damage:diff()} 点伤害。",
+
+  "MLYNARMOD-AS_IT_STANDS.title": "事到如今",
+  "MLYNARMOD-AS_IT_STANDS.description": "造成 {Damage:diff()} 点伤害。",
+
+  "MLYNARMOD-WEARISOME.title": "令人厌倦",
+  "MLYNARMOD-WEARISOME.description": "造成 {Damage:diff()} 点伤害。施加 {WeakPower} 层虚弱。",
+
+  "MLYNARMOD-SHAMELESS.title": "不知可耻",
+  "MLYNARMOD-SHAMELESS.description": "造成 {Damage:diff()} 点伤害。施加 {VulnerablePower} 层易伤。",
+
+  "MLYNARMOD-ONE_WISH.title": "一次许愿",
+  "MLYNARMOD-ONE_WISH.description": "造成 {Damage:diff()} 点伤害。若击杀，抽 1 张牌。消耗。",
+
+  "MLYNARMOD-SAME_SWORD.title": "同一柄剑",
+  "MLYNARMOD-SAME_SWORD.description": "造成 {Damage:diff()} 点伤害。若蓄势不少于 4，再造成 {Bonus} 点伤害。不进入拔剑。",
+
+  "MLYNARMOD-YELLOW_SAND.title": "黄沙",
+  "MLYNARMOD-YELLOW_SAND.description": "造成 {Damage:diff()} 点伤害。弃 1 张牌，抽 1 张牌。",
+
+  "MLYNARMOD-OUTSIDE_THE_CITY.title": "城外见闻",
+  "MLYNARMOD-OUTSIDE_THE_CITY.description": "蓄势 +{Poise}。抽 {Cards} 张牌。",
+
+  "MLYNARMOD-SUMMONS.title": "传唤",
+  "MLYNARMOD-SUMMONS.description": "获得 {Block:diff()} 点格挡。蓄势 +{Poise}。",
+
+  "MLYNARMOD-OFFICIAL_BUSINESS.title": "公事公办",
+  "MLYNARMOD-OFFICIAL_BUSINESS.description": "获得 {Block:diff()} 点格挡。",
+
+  "MLYNARMOD-READ_THE_WIND.title": "看风",
+  "MLYNARMOD-READ_THE_WIND.description": "预见 {Scry}。你弃掉的每张牌：蓄势 +1。",
+
+  "MLYNARMOD-READ_PAPER.title": "看报",
+  "MLYNARMOD-READ_PAPER.description": "抽 {Cards} 张牌。",
+
+  "MLYNARMOD-DOES_NOT_BLOCK.title": "并不挡人",
+  "MLYNARMOD-DOES_NOT_BLOCK.description": "本回合你受到的攻击伤害 -{Reduce}。",
+
+  "MLYNARMOD-USELESS_HABIT.title": "无用习惯",
+  "MLYNARMOD-USELESS_HABIT.description": "获得 {Block:diff()} 点格挡。本回合结束时若未打出攻击，蓄势 +1。",
+
+  "MLYNARMOD-ROUTINE_MAIL.title": "例行信件",
+  "MLYNARMOD-ROUTINE_MAIL.description": "弃 1 张牌。蓄势 +{Poise}。",
+
+  "MLYNARMOD-READY.title": "已做好准备",
+  "MLYNARMOD-READY.description": "下个回合开始时，蓄势 +{Poise}。",
+
+  "MLYNARMOD-UNRESOLVED_SORROW.title": "未宽解的悲哀",
+  "MLYNARMOD-UNRESOLVED_SORROW.description": "进入拔剑（1 回合）。造成 {Damage:diff()} 点伤害两次。这次拔剑中击杀敌人则收剑不重置。可提前收剑。",
+
+  "MLYNARMOD-SECOND_CUT.title": "再一剑",
+  "MLYNARMOD-SECOND_CUT.description": "造成 {Damage:diff()} 点伤害两次。不进入拔剑。",
+
+  "MLYNARMOD-SHEATHE_CARD.title": "入鞘",
+  "MLYNARMOD-SHEATHE_CARD.description": "若在拔剑中：立即收剑。否则获得 {Block:diff()} 点格挡。",
+
+  "MLYNARMOD-LEAVE_AN_INCH.title": "留一寸",
+  "MLYNARMOD-LEAVE_AN_INCH.description": "下一次收剑：保留 {Keep} 点蓄势。不是不重置。消耗。",
+
+  "MLYNARMOD-WANDERER_CARD.title": "游侠",
+  "MLYNARMOD-WANDERER_CARD.description": "攻击伤害 +{Dmg}。场上敌人不少于 3 时改为 +{Crowd}，且受到伤害 -{Red}。",
+
+  "MLYNARMOD-BESIDE.title": "身侧",
+  "MLYNARMOD-BESIDE.description": "获得 {Block:diff()} 点格挡。本回合受到的伤害 -{Red}。",
+
+  "MLYNARMOD-INDIFFERENT_CARD.title": "无动于衷",
+  "MLYNARMOD-INDIFFERENT_CARD.description": "你每次受到攻击伤害，对来源造成 {Thorns} 点真实伤害。",
+
+  "MLYNARMOD-REPAY_CARD.title": "回击",
+  "MLYNARMOD-REPAY_CARD.description": "你每次受到攻击伤害，对来源造成 {Thorns} 点真实伤害。",
+
+  "MLYNARMOD-LIGHT_KEPT.title": "收着的光",
+  "MLYNARMOD-LIGHT_KEPT.description": "造成 {Damage:diff()} 点伤害。此伤害不是真实伤害。",
+
+  "MLYNARMOD-CROSS_SWORD.title": "横剑",
+  "MLYNARMOD-CROSS_SWORD.description": "造成 {Damage:diff()} 点伤害。若目标意图攻击，改为 {Alt} 点。",
+
+  "MLYNARMOD-PRESS_THE_BLADE.title": "按剑",
+  "MLYNARMOD-PRESS_THE_BLADE.description": "造成 {Damage:diff()} 点伤害。该敌人本回合攻击伤害 -{Red}。",
+
+  "MLYNARMOD-HAND_FIRST.title": "先伸手",
+  "MLYNARMOD-HAND_FIRST.description": "受到 {Self} 点伤害。造成 {Damage:diff()} 点伤害。",
+
+  "MLYNARMOD-OLD_BRANCH.title": "旧枝",
+  "MLYNARMOD-OLD_BRANCH.description": "对随机敌人造成 {Damage:diff()} 点伤害 3 次。",
+
+  "MLYNARMOD-HOSTILITY.title": "敌视",
+  "MLYNARMOD-HOSTILITY.description": "造成 {Damage:diff()} 点伤害。你每有一种负面，伤害 +{Per}。",
+
+  "MLYNARMOD-THIS_NIGHT.title": "这一夜",
+  "MLYNARMOD-THIS_NIGHT.description": "对所有敌人造成 {Damage:diff()} 点伤害。",
+
+  "MLYNARMOD-HUNTERS_DEATHS.title": "不必轻描淡写",
+  "MLYNARMOD-HUNTERS_DEATHS.description": "造成 {Damage:diff()} 点伤害。消耗。",
+
+  "MLYNARMOD-IF_ROTTEN.title": "若也腐朽",
+  "MLYNARMOD-IF_ROTTEN.description": "造成 {Damage:diff()} 点伤害。若目标是精英或首领，蓄势 +{Poise}。",
+
+  "MLYNARMOD-LET_PASS.title": "默许",
+  "MLYNARMOD-LET_PASS.description": "造成 {Damage:diff()} 点伤害。若未击杀：蓄势 +1，抽 1 张牌。",
+
+  "MLYNARMOD-THEIR_OWN_ROAD.title": "她们自己的路",
+  "MLYNARMOD-THEIR_OWN_ROAD.description": "抽 {Cards} 张牌。你可以弃掉任意张攻击牌，每弃 1 张，蓄势 +1。",
+
+  "MLYNARMOD-UNFINISHED_WORK.title": "未完的公事",
+  "MLYNARMOD-UNFINISHED_WORK.description": "蓄势 +{Poise}。弃 1 张牌。",
+
+  "MLYNARMOD-NONE_OF_MY_BUSINESS.title": "不关我事",
+  "MLYNARMOD-NONE_OF_MY_BUSINESS.description": "抽 1 张牌。将手牌 1 张放到抽牌堆底。下个回合抽 1 张牌。",
+
+  "MLYNARMOD-DRAW_MARGARET.title": "拔剑，玛嘉烈",
+  "MLYNARMOD-DRAW_MARGARET.description": "你的下一张攻击伤害 +{Bonus}。不进入拔剑。本回合结束时若未攻击，受到 {Hurt} 点伤害。",
+
+  "MLYNARMOD-DOES_NOT_DECIDE.title": "说了不算",
+  "MLYNARMOD-DOES_NOT_DECIDE.description": "解除你的 1 个负面状态。获得 {Block:diff()} 点格挡。",
+
+  "MLYNARMOD-CLERK.title": "办事员",
+  "MLYNARMOD-CLERK.description": "抽 2 张牌。本回合手牌中费用最高的 1 张费用 -1。",
+
+  "MLYNARMOD-THAT_SHAME.title": "那桩耻辱",
+  "MLYNARMOD-THAT_SHAME.description": "蓄势 +{Poise}。本回合你造成的攻击伤害 -3。",
+
+  "MLYNARMOD-FELLOW_TRAVELER.title": "一时同行",
+  "MLYNARMOD-FELLOW_TRAVELER.description": "下个回合能量 +1，抽 {Cards} 张牌。",
+
+  "MLYNARMOD-FAMILY_LETTER.title": "家书",
+  "MLYNARMOD-FAMILY_LETTER.description": "预见 {Scry}。你可以将弃牌堆的 1 张牌放到抽牌堆顶。",
+
+  "MLYNARMOD-DOES_NOT_KNOW_THE_ROAD.title": "不识路",
+  "MLYNARMOD-DOES_NOT_KNOW_THE_ROAD.description": "预见 {Scry}。获得 {Block:diff()} 点格挡。",
+
+  "MLYNARMOD-ONE_PAPER.title": "一纸辞呈",
+  "MLYNARMOD-ONE_PAPER.description": "蓄势 +{Poise}。抽 2 张牌。消耗。",
+
+  "MLYNARMOD-BEFORE_THE_MISTAKE.title": "大错之前",
+  "MLYNARMOD-BEFORE_THE_MISTAKE.description": "获得 {Block:diff()} 点格挡。指定 1 名敌人，施加 1 层虚弱。",
+
+  "MLYNARMOD-NO_LEAVE_CARD.title": "不曾请假",
+  "MLYNARMOD-NO_LEAVE_CARD.description": "每个鞘中回合开始，额外蓄势 +1。",
+
+  "MLYNARMOD-AFTER_SHEATHE_CARD.title": "收回之后",
+  "MLYNARMOD-AFTER_SHEATHE_CARD.description": "每当你收剑，抽 {Cards} 张牌。",
+
+  "MLYNARMOD-TIDE_OF_LIGHT_CARD.title": "光潮",
+  "MLYNARMOD-TIDE_OF_LIGHT_CARD.description": "在拔剑中时，你的攻击伤害 +{Dmg}。",
+
+  "MLYNARMOD-BENCH_CARD.title": "长椅",
+  "MLYNARMOD-BENCH_CARD.description": "鞘中回合结束时，若本回合未打出攻击，获得 {Block:diff()} 点格挡。",
+
+  "MLYNARMOD-NEED_NOT_RETURN_CARD.title": "不必回岗",
+  "MLYNARMOD-NEED_NOT_RETURN_CARD.description": "你每次受到攻击伤害，蓄势 +1。",
+
+  "MLYNARMOD-UNLIT_GLORY.title": "未照耀的荣光",
+  "MLYNARMOD-UNLIT_GLORY.description": "进入拔剑（2 回合）。对所有敌人造成 {Damage:diff()} 点伤害，再造成 {True} 点真实伤害。这次拔剑中每击杀 1 名敌人，蓄势 -1。",
+
+  "MLYNARMOD-MAN_IN_THE_SHEATH_CARD.title": "鞘中人",
+  "MLYNARMOD-MAN_IN_THE_SHEATH_CARD.description": "每场战斗开始时，蓄势 +3。本场第一次拔剑持续 +1 回合。",
+
+  "MLYNARMOD-FEAR_NO_DARK_CARD.title": "不畏苦暗",
+  "MLYNARMOD-FEAR_NO_DARK_CARD.description": "每当你收剑：若这次拔剑中受伤或没有击杀，保留一半蓄势，并获得 {Block:diff()} 点格挡。",
+
+  "MLYNARMOD-TEN_YEAR_BALLOON_CARD.title": "十年气球人",
+  "MLYNARMOD-TEN_YEAR_BALLOON_CARD.description": "每个完整鞘中回合结束，获得 1 层灌满。进入拔剑时每层兑成 {Per} 点伤害。",
+
+  "MLYNARMOD-GOLDEN_WRATH_CARD.title": "金色的愠怒",
+  "MLYNARMOD-GOLDEN_WRATH_CARD.description": "鞘中攻击施加 {Stacks} 层愠怒。进入拔剑时全部结算为真实伤害。",
+
+  "MLYNARMOD-UNWORTHY_OF_THE_SWORD.title": "不配我拔剑",
+  "MLYNARMOD-UNWORTHY_OF_THE_SWORD.description": "蓄势少于 5：造成 {Damage:diff()} 点伤害，不进入拔剑。否则进入拔剑（1 回合），造成 {Alt} + 当前蓄势 点伤害。",
+
+  "MLYNARMOD-I_AM_NO_KNIGHT.title": "我并非骑士",
+  "MLYNARMOD-I_AM_NO_KNIGHT.description": "解除你的所有负面状态。本回合你可以提前收剑，且本次收剑不重置。",
+
+  "MLYNARMOD-TITLE_OF_GRAND_KNIGHT.title": "长骑之名",
+  "MLYNARMOD-TITLE_OF_GRAND_KNIGHT.description": "蓄势 +{Poise}。本场你无法再获得力量。消耗。",
+
+  "MLYNARMOD-LETTER_PUT_BACK.title": "装回去的信",
+  "MLYNARMOD-LETTER_PUT_BACK.description": "获得 1 张伤口。下一次拔剑：收剑时不重置，且攻击伤害 +{Bonus}。消耗。",
+
+  "MLYNARMOD-WHY_WAS_IT_ME_CARD.title": "留下的是我",
+  "MLYNARMOD-WHY_WAS_IT_ME_CARD.description": "每当你收剑：抽 2 张牌，下个回合能量 +1。",
+
+  "MLYNARMOD-OBSCURE_WANDERER_CARD.title": "日暮寻路",
+  "MLYNARMOD-OBSCURE_WANDERER_CARD.description": "预见 {Scry}。弃掉的每张牌蓄势 +1。你可以将弃牌堆 1 张牌放到抽牌堆顶。",
+
+  "MLYNARMOD-WILDERNESS_CARD.title": "没有灯光的荒野",
+  "MLYNARMOD-WILDERNESS_CARD.description": "鞘中回合结束时若未打出攻击：蓄势 +{Poise}，获得 {Block:diff()} 点格挡。",
+
+  "MLYNARMOD-GIVE_ME_A_SWORD.title": "给我一把剑",
+  "MLYNARMOD-GIVE_ME_A_SWORD.description": "下一次拔剑持续 +1 回合。消耗。",
+
+  "MLYNARMOD-SPEAR_IN_THE_RAIN.title": "雨落枪尖",
+  "MLYNARMOD-SPEAR_IN_THE_RAIN.description": "对所有敌人造成 {Damage:diff()} 点伤害。若击杀：你受到 {Self} 点伤害。若没有击杀：蓄势 +{Poise}。",
+
+  "MLYNARMOD-LETTER_OPENER.title": "拆信刀",
+  "MLYNARMOD-LETTER_OPENER.description": "蓄势 +4。消耗。",
+
+  "MLYNARMOD-STAND_ALONE_CARD.title": "独自拦下",
+  "MLYNARMOD-STAND_ALONE_CARD.description": "获得 {Block:diff()} 点格挡。本场在鞘中时，受击反弹 {Thorns} 点真实伤害。",
+
+  "MLYNARMOD-KAZIMIERZ_STILL_HAS_A_ROAD.title": "卡西米尔仍然有路",
+  "MLYNARMOD-KAZIMIERZ_STILL_HAS_A_ROAD.description": "本场第一次生命降至半数或以下：蓄势变为上限。本回合不能进入拔剑。"
+}
