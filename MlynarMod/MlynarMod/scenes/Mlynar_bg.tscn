@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Texture2D" path="res://MlynarMod/scenes/mlynar_select_full.png" id="1_full"]
+
+[node name="Control" type="Control"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1790.0
+offset_top = -1043.0
+offset_right = 1790.0
+offset_bottom = 1043.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1520.0
+offset_top = 503.0
+offset_right = 2680.0
+offset_bottom = 1583.0
+texture = ExtResource("1_full")
+expand_mode = 1
+stretch_mode = 5
