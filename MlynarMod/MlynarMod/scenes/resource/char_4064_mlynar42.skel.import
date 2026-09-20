@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://dddkqo78iuyvf"
+path="res://.godot/imported/char_4064_mlynar42.skel-0b49d5c8e4b2f3d805504b3f395d8d24.spskel"
+
+[deps]
+
+source_file="res://MlynarMod/scenes/resource/char_4064_mlynar42.skel"
+dest_files=["res://.godot/imported/char_4064_mlynar42.skel-0b49d5c8e4b2f3d805504b3f395d8d24.spskel"]
+
+[params]
+

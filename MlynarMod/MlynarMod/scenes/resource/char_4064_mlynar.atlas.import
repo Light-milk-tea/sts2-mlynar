@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://bhb87luaggkep"
+path="res://.godot/imported/char_4064_mlynar.atlas-a84d573fc50994b9e075f17e50d6dfe6.spatlas"
+
+[deps]
+
+source_file="res://MlynarMod/scenes/resource/char_4064_mlynar.atlas"
+dest_files=["res://.godot/imported/char_4064_mlynar.atlas-a84d573fc50994b9e075f17e50d6dfe6.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

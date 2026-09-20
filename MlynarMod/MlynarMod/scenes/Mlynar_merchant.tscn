@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="SpineSkeletonDataResource" path="res://MlynarMod/scenes/Mlynar_build.tres" id="1_skel"]
+[ext_resource type="Script" path="res://MlynarMod/scenes/MlynarMerchantNode.cs" id="2_script"]
+
+[node name="MlynarMerchant" type="Node2D"]
+script = ExtResource("2_script")
+
+[node name="SpineSprite" type="SpineSprite" parent="."]
+skeleton_data_res = ExtResource("1_skel")
+preview_skin = "default"
+preview_animation = "Relax"
+preview_frame = false
+preview_time = 0.0
+scale = Vector2(0.8, 0.8)
