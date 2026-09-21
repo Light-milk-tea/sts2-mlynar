@@ -2,6 +2,8 @@
 
 杀戮尖塔 2 独立角色模组：明日方舟 **玛恩纳（Młynar）**。
 
+**本模组仍在研发中，是未完成品。** 卡组、视觉和机制都还能改，不能当正式发布版用。能进游戏打，但不保证平衡、完整或稳定。
+
 明天开工前，先看这两份：
 
 - [玛恩纳末端卡牌与机制设计](玛恩纳mod/玛恩纳末端卡牌与机制设计.md)
@@ -11,6 +13,7 @@
 
 | 目录 / 文件 | 说明 |
 | --- | --- |
+| `MlynarMod/` | 正在做的玛恩纳角色工程（未完成） |
 | `玛恩纳mod/` | 角色设计稿 |
 | `玛恩纳wiki/` | 玛恩纳资料库（给写卡用，不是原文库） |
 | `MyFirstMod/` | 已跑通的试验角色工程（试炼者） |
@@ -33,8 +36,9 @@ git clone --depth 1 https://github.com/lamali292/Downfall.git _ref/Downfall
 
 ## 本机路径
 
-`MyFirstMod/Directory.Build.props` 含本机 MegaDot 和游戏目录，已忽略。拷贝示例再改路径：
+`Directory.Build.props` 含本机 MegaDot 和游戏目录，已忽略。拷贝示例再改路径：
 
 ```
 copy MyFirstMod\Directory.Build.props.example MyFirstMod\Directory.Build.props
+copy MlynarMod\Directory.Build.props.example MlynarMod\Directory.Build.props
 ```
