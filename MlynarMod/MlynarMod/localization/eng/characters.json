@@ -1,7 +1,7 @@
 {
   "MLYNARMOD-MLYNAR.title": "Mlynar",
   "MLYNARMOD-MLYNAR.titleObject": "Mlynar",
-  "MLYNARMOD-MLYNAR.description": "A Kazimierz wanderer. Build Poise in the sheath, draw the sword for a short window, then sheathe it.",
+  "MLYNARMOD-MLYNAR.description": "A Kazimierz wanderer. Store Poise in the sheath. While the sword is drawn, each Poise increases attack damage by 10%. Entering the draw grants 1 Energy; leaving it clears Poise and draws 3 cards.",
   "MLYNARMOD-MLYNAR.pronounObject": "him",
   "MLYNARMOD-MLYNAR.possessiveAdjective": "his",
   "MLYNARMOD-MLYNAR.pronounPossessive": "his",
@@ -16,5 +16,6 @@
   "mlynar_discard_one": "Discard 1 card",
   "mlynar_discard_attacks": "Discard any number of Attacks",
   "mlynar_bottom": "Put on bottom of draw pile",
-  "mlynar_top": "Put on top of draw pile"
+  "mlynar_top": "Put on top of draw pile",
+  "mlynar_letter_exhaust": "Exhaust 1 card; choose none to gain Poise"
 }

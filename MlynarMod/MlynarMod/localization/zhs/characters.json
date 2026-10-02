@@ -1,7 +1,7 @@
 {
   "MLYNARMOD-MLYNAR.title": "玛恩纳",
   "MLYNARMOD-MLYNAR.titleObject": "玛恩纳",
-  "MLYNARMOD-MLYNAR.description": "卡西米尔的游侠。鞘中蓄势，拔剑只开一两个回合，打完收剑。",
+  "MLYNARMOD-MLYNAR.description": "卡西米尔的游侠。鞘中积蓄势，拔剑时每层蓄势使攻击伤害提高 10%。进入拔剑获得 1 点能量；退出时蓄势清零，并抽 3 张牌。",
   "MLYNARMOD-MLYNAR.pronounObject": "他",
   "MLYNARMOD-MLYNAR.possessiveAdjective": "他的",
   "MLYNARMOD-MLYNAR.pronounPossessive": "他的",
@@ -16,5 +16,6 @@
   "mlynar_discard_one": "弃 1 张牌",
   "mlynar_discard_attacks": "弃掉任意张攻击牌",
   "mlynar_bottom": "放到抽牌堆底",
-  "mlynar_top": "放到抽牌堆顶"
+  "mlynar_top": "放到抽牌堆顶",
+  "mlynar_letter_exhaust": "消耗 1 张牌；不选则获得蓄势"
 }

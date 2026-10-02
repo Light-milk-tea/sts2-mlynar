@@ -1,5 +1,14 @@
 using BaseLib.Abstracts;
+using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Commands.Builders;
+using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.ValueProps;
+using MlynarMod.MlynarModCode.Core;
 
 namespace MlynarMod.MlynarModCode.Powers;
 
@@ -10,164 +19,91 @@ public class WrathMarkPower : MlynarPower
 
     public override List<(string, string)> Localization => new PowerLoc(
         "愠怒",
-        "进入拔剑时结算为等量真实伤害。",
-        "进入拔剑时结算为等量真实伤害。");
-}
-
-public class TenYearBalloonPower : MlynarPower
-{
-    public override PowerType Type => PowerType.Buff;
-    public override PowerStackType StackType => PowerStackType.Single;
-
-    public override List<(string, string)> Localization => new PowerLoc(
-        "十年气球人",
-        "每个完整鞘中回合结束获得 1 层灌满。进入拔剑时兑成伤害或格挡。",
-        "每个完整鞘中回合结束获得 1 层灌满。进入拔剑时兑成伤害或格挡。");
-}
-
-public class ManInSheathPower : MlynarPower
-{
-    public override PowerType Type => PowerType.Buff;
-    public override PowerStackType StackType => PowerStackType.Single;
-
-    public override List<(string, string)> Localization => new PowerLoc(
-        "鞘中人",
-        "每场战斗开始蓄势 +3。本场第一次拔剑持续 +1 回合。",
-        "每场战斗开始蓄势 +3。本场第一次拔剑持续 +1 回合。");
+        "进入拔剑时结算为等量真实伤害，然后清零。",
+        "进入拔剑时结算为等量真实伤害，然后清零。");
 }
 
 public class WandererPower : MlynarPower
 {
     public override PowerType Type => PowerType.Buff;
-    public override PowerStackType StackType => PowerStackType.Single;
+    public override PowerStackType StackType => PowerStackType.Counter;
+
+    public int Bonus;
+    public int Crowd = 4;
+    public int Reduce = 2;
+
+    public override int DisplayAmount => Bonus;
+
+    public void Add(int bonus, int crowd, int reduce)
+    {
+        Bonus += bonus;
+        Crowd += crowd;
+        Reduce += reduce;
+        InvokeDisplayAmountChanged();
+    }
 
     public override List<(string, string)> Localization => new PowerLoc(
         "游侠",
-        "攻击加伤；场上敌人不少于 3 名时加得更多，并减伤。",
-        "攻击加伤；场上敌人不少于 3 名时加得更多，并减伤。");
+        "攻击伤害增加。场上敌人不少于 3 名时加得更多，并减少受到的伤害。",
+        "攻击伤害增加。场上敌人不少于 3 名时加得更多，并减少受到的伤害。");
+
+    public override decimal ModifyDamageAdditive(
+        Creature? target,
+        decimal amount,
+        ValueProp props,
+        Creature? dealer,
+        CardModel? cardSource,
+        CardPlay? cardPlay)
+    {
+        if (Owner == null || dealer != Owner || Bonus <= 0) return 0;
+        if (cardSource == null || cardSource.Type != CardType.Attack) return 0;
+        if (!props.IsPoweredAttack()) return 0;
+        var enemies = Owner.CombatState?.HittableEnemies.Count() ?? 0;
+        return enemies >= 3 ? Crowd : Bonus;
+    }
+
+    public override decimal ModifyDamageMultiplicative(
+        Creature? target,
+        decimal amount,
+        ValueProp props,
+        Creature? dealer,
+        CardModel? cardSource,
+        CardPlay? cardPlay)
+    {
+        if (Owner == null || target != Owner || Reduce <= 0) return 1m;
+        var enemies = Owner.CombatState?.HittableEnemies.Count() ?? 0;
+        if (enemies < 3) return 1m;
+        var reduced = Math.Max(0, (int)amount - Reduce);
+        return amount == 0 ? 1m : reduced / amount;
+    }
 }
 
-public class IndifferentPower : MlynarPower
+public class ManInSheathPower : MlynarPower
 {
     public override PowerType Type => PowerType.Buff;
-    public override PowerStackType StackType => PowerStackType.Single;
+    public override PowerStackType StackType => PowerStackType.Counter;
 
     public override List<(string, string)> Localization => new PowerLoc(
-        "无动于衷",
-        "受击时对来源造成真实伤害。",
-        "受击时对来源造成真实伤害。");
+        "鞘中人",
+        "每回合开始时，获得层数点蓄势。",
+        "每回合开始时，获得层数点蓄势。");
+
+    public override async Task AfterPlayerTurnStart(PlayerChoiceContext ctx, Player player)
+    {
+        if (player.Creature != Owner || Amount <= 0) return;
+        await MlynarRuntime.GainPoise(ctx, Owner, Amount);
+    }
 }
 
 public class FearNoDarkPower : MlynarPower
 {
     public override PowerType Type => PowerType.Buff;
-    public override PowerStackType StackType => PowerStackType.Single;
+    public override PowerStackType StackType => PowerStackType.Counter;
 
     public override List<(string, string)> Localization => new PowerLoc(
         "不畏苦暗",
-        "收剑时若这次拔剑中受伤或未击杀，保留一半蓄势并获得格挡。",
-        "收剑时若这次拔剑中受伤或未击杀，保留一半蓄势并获得格挡。");
-}
-
-public class WhyMePower : MlynarPower
-{
-    public override PowerType Type => PowerType.Buff;
-    public override PowerStackType StackType => PowerStackType.Single;
-
-    public override List<(string, string)> Localization => new PowerLoc(
-        "留下的是我",
-        "每次收剑：抽 2，下回合能量 +1。",
-        "每次收剑：抽 2，下回合能量 +1。");
-}
-
-public class WildernessPower : MlynarPower
-{
-    public override PowerType Type => PowerType.Buff;
-    public override PowerStackType StackType => PowerStackType.Single;
-
-    public override List<(string, string)> Localization => new PowerLoc(
-        "没有灯光的荒野",
-        "鞘中回合若未打出攻击：蓄势 +2，获得格挡。",
-        "鞘中回合若未打出攻击：蓄势 +2，获得格挡。");
-}
-
-public class RoadRemainsPower : MlynarPower
-{
-    public override PowerType Type => PowerType.Buff;
-    public override PowerStackType StackType => PowerStackType.Single;
-
-    public bool Used;
-
-    public override List<(string, string)> Localization => new PowerLoc(
-        "卡西米尔仍然有路",
-        "本场第一次生命降至半数或以下：蓄势回满。本回合不能拔剑。",
-        "本场第一次生命降至半数或以下：蓄势回满。本回合不能拔剑。");
-}
-
-public class AfterSheathePower : MlynarPower
-{
-    public override PowerType Type => PowerType.Buff;
-    public override PowerStackType StackType => PowerStackType.Single;
-
-    public override List<(string, string)> Localization => new PowerLoc(
-        "收回之后",
-        "每当你收剑，抽牌。",
-        "每当你收剑，抽牌。");
-}
-
-public class TideOfLightPower : MlynarPower
-{
-    public override PowerType Type => PowerType.Buff;
-    public override PowerStackType StackType => PowerStackType.Single;
-
-    public override List<(string, string)> Localization => new PowerLoc(
-        "光潮",
-        "在拔剑中时，攻击伤害增加。",
-        "在拔剑中时，攻击伤害增加。");
-}
-
-public class BenchPower : MlynarPower
-{
-    public override PowerType Type => PowerType.Buff;
-    public override PowerStackType StackType => PowerStackType.Single;
-
-    public override List<(string, string)> Localization => new PowerLoc(
-        "长椅",
-        "鞘中回合结束时若未攻击，获得格挡。",
-        "鞘中回合结束时若未攻击，获得格挡。");
-}
-
-public class NoLeavePower : MlynarPower
-{
-    public override PowerType Type => PowerType.Buff;
-    public override PowerStackType StackType => PowerStackType.Single;
-
-    public override List<(string, string)> Localization => new PowerLoc(
-        "不曾请假",
-        "每个鞘中回合开始，额外获得蓄势。",
-        "每个鞘中回合开始，额外获得蓄势。");
-}
-
-public class NeedNotReturnPower : MlynarPower
-{
-    public override PowerType Type => PowerType.Buff;
-    public override PowerStackType StackType => PowerStackType.Single;
-
-    public override List<(string, string)> Localization => new PowerLoc(
-        "不必回岗",
-        "每次受到攻击伤害，获得蓄势。",
-        "每次受到攻击伤害，获得蓄势。");
-}
-
-public class RepayPower : MlynarPower
-{
-    public override PowerType Type => PowerType.Buff;
-    public override PowerStackType StackType => PowerStackType.Single;
-
-    public override List<(string, string)> Localization => new PowerLoc(
-        "回击",
-        "每次受到攻击伤害，对来源造成真实伤害。",
-        "每次受到攻击伤害，对来源造成真实伤害。");
+        "每当你退出拔剑，获得层数点格挡。",
+        "每当你退出拔剑，获得层数点格挡。");
 }
 
 public class GoldenWrathPower : MlynarPower
@@ -177,17 +113,48 @@ public class GoldenWrathPower : MlynarPower
 
     public override List<(string, string)> Localization => new PowerLoc(
         "金色的愠怒",
-        "鞘中攻击施加愠怒。进入拔剑时引爆为真实伤害。",
-        "鞘中攻击施加愠怒。进入拔剑时引爆为真实伤害。");
+        "鞘中的每次攻击对目标施加等同于该次伤害的愠怒。进入拔剑时，愠怒结算为真实伤害。",
+        "鞘中的每次攻击对目标施加等同于该次伤害的愠怒。进入拔剑时，愠怒结算为真实伤害。");
+
+    public override async Task AfterAttack(PlayerChoiceContext ctx, AttackCommand attack)
+    {
+        if (Owner == null || attack.Attacker != Owner) return;
+        if (MlynarRuntime.IsDrawn(Owner)) return;
+        if (attack.CardPlay?.Card.Type != CardType.Attack) return;
+
+        var hits = attack.Results.SelectMany(r => r).ToList();
+        foreach (var result in hits)
+        {
+            if (result.Receiver == null || result.Receiver == Owner) continue;
+            var stacks = (int)result.TotalDamage;
+            if (stacks <= 0) continue;
+            await PowerCmd.Apply<WrathMarkPower>(ctx, result.Receiver, stacks, Owner, attack.CardPlay?.Card);
+        }
+    }
 }
 
-public class StandAlonePower : MlynarPower
+public class VastRoarPower : MlynarPower
 {
     public override PowerType Type => PowerType.Buff;
-    public override PowerStackType StackType => PowerStackType.Single;
+    public override PowerStackType StackType => PowerStackType.Counter;
 
     public override List<(string, string)> Localization => new PowerLoc(
-        "独自拦下",
-        "本场在鞘中时，受击反弹真实伤害。",
-        "本场在鞘中时，受击反弹真实伤害。");
+        "苍茫怒号",
+        "本场在鞘中时，每当你受到攻击伤害，对来源造成层数点真实伤害。",
+        "本场在鞘中时，每当你受到攻击伤害，对来源造成层数点真实伤害。");
+
+    public override async Task BeforeDamageReceived(
+        PlayerChoiceContext choiceContext,
+        Creature target,
+        decimal amount,
+        ValueProp props,
+        Creature? dealer,
+        CardModel? cardSource)
+    {
+        if (Owner == null || target != Owner || Amount <= 0) return;
+        if (dealer == null || dealer == Owner) return;
+        if (!props.IsPoweredAttack()) return;
+        if (MlynarRuntime.IsDrawn(Owner)) return;
+        await CreatureCmd.Damage(choiceContext, dealer, Amount, ValueProp.Unpowered, Owner);
+    }
 }

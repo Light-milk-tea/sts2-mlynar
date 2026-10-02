@@ -12,20 +12,14 @@ public class DrawnPower : MlynarPower
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    public int WindowBonus;
-    public int StoredPoise;
-    public bool NoResetOnKill;
-    public bool AllowEarlySheathe;
-    public bool NoResetThisWindow;
-
     public override int DisplayAmount => Amount;
     public override string CustomPackedIconPath => "drawnpower.png".PowerImagePath();
     public override string CustomBigIconPath => "drawnpower.png".BigPowerImagePath();
 
     public override List<(string, string)> Localization => new PowerLoc(
         "拔剑",
-        "已拔剑。攻击额外造成进入拔剑时的蓄势。回合结束时层数 -1，到 0 时收剑。",
-        "已拔剑。攻击额外造成进入拔剑时的蓄势。回合结束时层数 -1，到 0 时收剑。");
+        "已拔剑，层数是剩余回合。攻击伤害每层蓄势 +10%。进入时获得 1 点能量。回合结束层数 -1，到 0 时退出。",
+        "已拔剑，层数是剩余回合。攻击伤害每层蓄势 +10%。进入时获得 1 点能量。回合结束层数 -1，到 0 时退出。");
 
     public override async Task AfterApplied(Creature? applier, CardModel? cardSource)
     {

@@ -1,7 +1,6 @@
 using BaseLib.Abstracts;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Combat;
-using MegaCrit.Sts2.Core.Commands.Builders;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
@@ -27,48 +26,17 @@ public class PoisePower : MlynarPower
 
     public override List<(string, string)> Localization => new PowerLoc(
         "蓄势",
-        "最多 8 点。鞘中每回合开始 +1。进入拔剑时把当前蓄势兑成窗口伤害并清零。",
-        "最多 8 点。鞘中每回合开始 +1。进入拔剑时把当前蓄势兑成窗口伤害并清零。");
+        "最多 10 层。拔剑期间，每层使攻击伤害 +10%。主动退出时清零并抽 3 张牌；回合结束自动退出时清零，下回合抽 3 张牌。",
+        "最多 10 层。拔剑期间，每层使攻击伤害 +10%。主动退出时清零并抽 3 张牌；回合结束自动退出时清零，下回合抽 3 张牌。");
 
     public bool AttackedThisTurn;
-    public bool DamagedThisWindow;
-    public bool KilledThisWindow;
     public bool CannotDrawThisTurn;
-    public bool FirstDrawExtraTurn;
-    public bool NextDrawExtraTurn;
-    public bool NextDrawNoReset;
-    public bool PendingNoResetOnKill;
-    public bool PendingAllowEarlySheathe;
-    public bool ForceNoResetOnce;
-    public bool FearNoDark;
-    public int FearNoDarkBlock = 8;
-    public int NextSheatheKeepPoints;
-    public int NextDrawExtraDamage;
-    public int ExtraWindowFlat;
-    public int ExtraSheathStartPoise;
-    public int BlockOnSheathe;
-    public int DrawOnSheathe;
-    public int EnergyOnSheathe;
-    public int BalloonStacks;
-    public int BalloonPerStack = 4;
-    public bool BalloonAsBlock;
-    public int WrathPerSheathAttack;
-    public int SitPoise;
-    public int SitPoiseThisTurn;
-    public int SitBlock;
-    public int NextTurnBonusPoise;
-    public int IncomingReduceThisTurn;
-    public int NewspaperPoise;
-    public bool NewspaperUsedThisTurn;
-    public int HitPoise;
-    public int WandererDamage;
-    public int WandererCrowdDamage;
-    public int WandererReduce;
-    public int DrawnAttackBonus;
-    public int Thorns;
-    public int SheathThorns;
-    public bool Taunt;
-    public bool NoStrengthFocus;
+    public bool SheatheResolvedThisEnd;
+    public int EndTurnPoiseIfNoAttack;
+    public int EndTurnDamage;
+    public int EndTurnDamageIfNoAttack;
+    public int HoldPoise;
+
     public void SetPoints(int value)
     {
         var next = Math.Clamp(value, 0, MlynarRuntime.PoiseCap);
@@ -78,41 +46,45 @@ public class PoisePower : MlynarPower
         InvokeDisplayAmountChanged();
     }
 
-    public override async Task AfterPlayerTurnStart(PlayerChoiceContext ctx, Player player)
+    public override Task AfterPlayerTurnStart(PlayerChoiceContext ctx, Player player)
     {
-        if (player.Creature != Owner) return;
+        if (player.Creature != Owner) return Task.CompletedTask;
         AttackedThisTurn = false;
-        NewspaperUsedThisTurn = false;
         CannotDrawThisTurn = false;
-        IncomingReduceThisTurn = 0;
-        if (!MlynarRuntime.IsDrawn(Owner))
-            await MlynarRuntime.GainPoise(ctx, Owner, 1 + ExtraSheathStartPoise + NextTurnBonusPoise);
-        NextTurnBonusPoise = 0;
+        SheatheResolvedThisEnd = false;
+        return Task.CompletedTask;
     }
 
     public override async Task AfterSideTurnEnd(PlayerChoiceContext ctx, CombatSide side, IEnumerable<Creature> creatures)
     {
         if (Owner == null || !creatures.Contains(Owner)) return;
 
-        if (!MlynarRuntime.IsDrawn(Owner) && !AttackedThisTurn)
-        {
-            var sit = SitPoise + SitPoiseThisTurn;
-            SitPoiseThisTurn = 0;
-            if (sit > 0)
-                await MlynarRuntime.GainPoise(ctx, Owner, sit);
-            if (SitBlock > 0)
-                CreatureCmd.GainBlock(Owner, SitBlock, default, null, false);
-            if (BalloonPerStack > 0 && Owner.HasPower<TenYearBalloonPower>())
-                BalloonStacks += 1;
-        }
-
         if (MlynarRuntime.IsDrawn(Owner))
         {
-            var drawn = Owner.GetPower<DrawnPower>();
-            await PowerCmd.ModifyAmount(ctx, drawn, -1, Owner, null);
-            if (drawn.Amount <= 0)
-                await MlynarRuntime.Sheathe(ctx, Owner);
+            var drawn = Owner.GetPower<DrawnPower>()!;
+            if (drawn.Amount <= 1)
+                await MlynarRuntime.Sheathe(ctx, Owner, auto: true);
+            else
+                await PowerCmd.ModifyAmount(ctx, drawn, -1, Owner, null);
         }
+
+        SheatheResolvedThisEnd = true;
+
+        if (!AttackedThisTurn && EndTurnPoiseIfNoAttack > 0)
+            await MlynarRuntime.GainPoise(ctx, Owner, EndTurnPoiseIfNoAttack);
+        if (HoldPoise > 0)
+        {
+            await MlynarRuntime.GainPoise(ctx, Owner, HoldPoise);
+            HoldPoise = 0;
+        }
+        if (!AttackedThisTurn && EndTurnDamageIfNoAttack > 0)
+            await CreatureCmd.Damage(ctx, Owner, EndTurnDamageIfNoAttack, ValueProp.Move, Owner);
+        if (EndTurnDamage > 0)
+            await CreatureCmd.Damage(ctx, Owner, EndTurnDamage, ValueProp.Move, Owner);
+
+        EndTurnPoiseIfNoAttack = 0;
+        EndTurnDamage = 0;
+        EndTurnDamageIfNoAttack = 0;
     }
 
     public override Task AfterCardPlayed(PlayerChoiceContext ctx, CardPlay cardPlay)
@@ -122,47 +94,7 @@ public class PoisePower : MlynarPower
         return Task.CompletedTask;
     }
 
-    public override Task AfterDamageReceived(PlayerChoiceContext ctx, Creature target, DamageResult result, ValueProp props, Creature? dealer, CardModel? card)
-    {
-        if (target != Owner) return Task.CompletedTask;
-        if (result.UnblockedDamage <= 0) return Task.CompletedTask;
-        if (MlynarRuntime.IsDrawn(Owner))
-            DamagedThisWindow = true;
-        if (Owner.HasPower<RoadRemainsPower>() && !Owner.GetPower<RoadRemainsPower>().Used
-            && Owner.CurrentHp * 2 <= Owner.MaxHp)
-        {
-            Owner.GetPower<RoadRemainsPower>().Used = true;
-            CannotDrawThisTurn = true;
-            _ = MlynarRuntime.SetPoise(ctx, Owner, MlynarRuntime.PoiseCap);
-        }
-        if (HitPoise > 0)
-            _ = MlynarRuntime.GainPoise(ctx, Owner, HitPoise);
-        var thorns = Thorns + (MlynarRuntime.IsDrawn(Owner) ? 0 : SheathThorns);
-        if (thorns > 0 && dealer != null && dealer != Owner)
-            _ = CreatureCmd.Damage(ctx, dealer, thorns, ValueProp.Unpowered, Owner);
-        return Task.CompletedTask;
-    }
-
-    public override Task AfterAttack(PlayerChoiceContext ctx, AttackCommand attack)
-    {
-        if (attack.Attacker != Owner) return Task.CompletedTask;
-        var hits = attack.Results.SelectMany(r => r).ToList();
-        if (hits.Any(r => r.WasTargetKilled))
-            KilledThisWindow = true;
-
-        if (!MlynarRuntime.IsDrawn(Owner) && WrathPerSheathAttack > 0 && attack.CardPlay?.Card.Type == CardType.Attack)
-        {
-            foreach (var result in hits)
-            {
-                if (result.Receiver == null || result.Receiver == Owner) continue;
-                _ = PowerCmd.Apply<WrathMarkPower>(ctx, result.Receiver, WrathPerSheathAttack, Owner, attack.CardPlay?.Card);
-            }
-        }
-
-        return Task.CompletedTask;
-    }
-
-    public override decimal ModifyDamageAdditive(
+    public override decimal ModifyDamageMultiplicative(
         Creature? target,
         decimal amount,
         ValueProp props,
@@ -170,34 +102,19 @@ public class PoisePower : MlynarPower
         CardModel? cardSource,
         CardPlay? cardPlay)
     {
-        if (Owner == null) return 0;
-        if (dealer != null && dealer != Owner) return 0;
-        if (!props.IsPoweredAttack()) return 0;
+        if (Owner == null || dealer != Owner || cardSource == null) return 1m;
+        if (!props.IsPoweredAttack()) return 1m;
+        if (cardSource is IIgnorePoise) return 1m;
 
-        var bonus = MlynarRuntime.AttackBonus(Owner, cardSource);
-        if (bonus != 0 && cardPlay == null)
-            MlynarRuntime.PreviewBonusApplied = true;
-        return bonus;
-    }
-
-    public override decimal ModifyDamageMultiplicative(
-        Creature target,
-        decimal amount,
-        ValueProp props,
-        Creature? dealer,
-        CardModel? cardSource,
-        CardPlay? cardPlay)
-    {
-        if (target == Owner && IncomingReduceThisTurn > 0 && dealer != Owner)
+        var drawn = MlynarRuntime.IsDrawn(Owner);
+        if (!drawn)
         {
-            var reduced = Math.Max(0, (int)amount - IncomingReduceThisTurn);
-            return amount == 0 ? 1m : reduced / amount;
+            if (cardSource is not IDrawSwordCard || CannotDrawThisTurn)
+                return 1m;
         }
 
-        if (target != Owner || WandererReduce <= 0) return 1m;
-        var crowd = Owner.CombatState?.HittableEnemies.Count() ?? 0;
-        if (crowd < 3) return 1m;
-        var wandererReduced = Math.Max(0, (int)amount - WandererReduce);
-        return amount == 0 ? 1m : wandererReduced / amount;
+        var poise = Points;
+        if (poise <= 0) return 1m;
+        return 1m + poise * 0.1m;
     }
 }

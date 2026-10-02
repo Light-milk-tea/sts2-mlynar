@@ -35,7 +35,7 @@ public class Mlynar : PlaceholderCharacterModel
         ModelDb.Card<SelfContained>(),
         ModelDb.Card<SelfContained>(),
         ModelDb.Card<SelfContained>(),
-        ModelDb.Card<HoneSword>(),
+        ModelDb.Card<KnightSwordsmanship>(),
         ModelDb.Card<UnvoicedFury>()
     ];
 
