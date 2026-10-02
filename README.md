@@ -16,7 +16,6 @@
 | `MlynarMod/` | 正在做的玛恩纳角色工程（未完成） |
 | `玛恩纳mod/` | 角色设计稿 |
 | `玛恩纳wiki/` | 玛恩纳资料库（给写卡用，不是原文库） |
-| `MyFirstMod/` | 已跑通的试验角色工程（试炼者） |
 | `mod制作发布流程.md` | 环境、发布、工坊流程 |
 | `github提交SKILL.md` | 本仓库的提交规范 |
 
@@ -39,6 +38,5 @@ git clone --depth 1 https://github.com/lamali292/Downfall.git _ref/Downfall
 `Directory.Build.props` 含本机 MegaDot 和游戏目录，已忽略。拷贝示例再改路径：
 
 ```
-copy MyFirstMod\Directory.Build.props.example MyFirstMod\Directory.Build.props
 copy MlynarMod\Directory.Build.props.example MlynarMod\Directory.Build.props
 ```
